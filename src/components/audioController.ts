@@ -68,7 +68,7 @@ export class AudioController {
 		} else if (newAudioURL.includes(".mp3")) {
 			// Already contains .mp3 not doing anything
 		} else {
-			newAudioURL = newAudioURL + ".mp3";
+			newAudioURL = newAudioURL.trim() + ".mp3";
 		}
 
 		console.log("Filtered: " + newAudioURL);
