@@ -79,6 +79,7 @@ export class Assessment extends BaseQuiz {
 		this.currentBucket.numCorrect = 0;
 		this.currentBucket.numConsecutiveWrong = 0;
 		this.currentBucket.tested = true;
+		this.currentBucket.passed = false;
 	}
 
 	public TryAnswer = (answer: number, elapsed: number) => {
@@ -104,6 +105,7 @@ export class Assessment extends BaseQuiz {
 	
 		const endOperations = () => {
 			UIController.SetFeedbackVisibile(false);
+			UIController.ChangeStarImageAfterAnimation();
 			if (this.HasQuestionsLeft()) {
 				UIController.ReadyForNext(this.getNextQuestion());
 			} else {
@@ -147,7 +149,9 @@ export class Assessment extends BaseQuiz {
 		shuffleArray(answerOptions);
 
 		var result = {
-			qName: "question" + this.questionNumber + "-" + targetItem.itemName,
+			qName: "question-" + this.questionNumber + "-" + targetItem.itemName,
+			qNumber: this.questionNumber,
+			qTarget: targetItem.itemName,
 			promptText: "",
 			bucket: this.currentBucket.bucketID,
 			promptAudio: targetItem.itemName,
@@ -179,6 +183,7 @@ export class Assessment extends BaseQuiz {
 
 	public tryMoveBucket = (nBucket, passed: boolean) => {
 		if (this.currentBucket != null) {
+			this.currentBucket.passed = passed;
 			sendBucket(this.currentBucket, passed);
 		}
 		console.log("new  bucket is " + nBucket.bucketID);
@@ -197,6 +202,7 @@ export class Assessment extends BaseQuiz {
 			if (this.currentBucket.bucketID >= this.numBuckets) {
 				//passed highest bucket
 				console.log("passed highest bucket");
+				this.currentBucket.passed = true;
 				sendBucket(this.currentBucket, true);
 				UIController.ProgressChest();
 				hasQuestionsLeft = false;	
@@ -214,6 +220,7 @@ export class Assessment extends BaseQuiz {
 				}else{
 					// reached root node!!!!
 						console.log("reached root node");
+						this.currentBucket.passed = true;
 						sendBucket(this.currentBucket, true);
 						UIController.ProgressChest();
 						hasQuestionsLeft = false;
@@ -233,6 +240,7 @@ export class Assessment extends BaseQuiz {
 				//failed the lowest bucket
 				console.log("failed lowest bucket");
 				hasQuestionsLeft = false;
+				this.currentBucket.passed = false;
 				sendBucket(this.currentBucket, false);
 			}
 			else {
@@ -246,6 +254,7 @@ export class Assessment extends BaseQuiz {
 					// reached root node!!!!
 					console.log("reached root node");
 					hasQuestionsLeft = false;
+					this.currentBucket.passed = false;
 					sendBucket(this.currentBucket, false);
 					// do something here
 				}
@@ -254,5 +263,11 @@ export class Assessment extends BaseQuiz {
 
 		return hasQuestionsLeft;
 
+	}
+	
+	public override onEnd(): void {
+		sendFinished(this.buckets);
+		UIController.ShowEnd();
+		this.app.unityBridge.SendClose();
 	}
 }

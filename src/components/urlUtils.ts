@@ -10,7 +10,7 @@ export function getAppType(): string {
 
 export function getUUID(): string {
 	const pathParams = getPathName();
-	var nuuid = pathParams.get('uuid');
+	var nuuid = pathParams.get('cr_user_id');
 	if (nuuid == undefined) {
 		console.log("no uuid provided");
 		nuuid = "WebUserNoID"

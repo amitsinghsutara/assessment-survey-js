@@ -12,7 +12,7 @@ var gana;
 var latlong;
 var croppedlat, croppedlong;
 var city, region, country;
-var apptype;
+var dataURL;
 
 export function getLocation(){
 	console.log("starting to get location");
@@ -41,7 +41,7 @@ export function getLocation(){
 
 export function linkAnalytics(newgana, dataurl): void{
 	gana = newgana;
-	apptype = dataurl;
+	dataURL = dataurl;
 }
 
 export function setUuid(newUuid: string, newUserSource: string): void {
@@ -59,7 +59,24 @@ export function sendInit(): void {
 	logEvent(gana,"opened", {
 
 	});
+}
 
+export function getAppLanguageFromDataURL(appType: string): string {
+	// Check if app type is not empty and split the string by the hyphen then return the first element
+	if (appType && appType !== "" && appType.includes("-")) {
+		return appType.split("-")[0];
+	}
+
+	return "NotAvailable";
+}
+
+export function getAppTypeFromDataURL(appType: string): string {
+	// Check if app type is not empty and split the string by the hyphen then return the last element
+	if (appType && appType !== "" && appType.includes("-")) {
+		return appType.split("-")[1];
+	}
+
+	return "NotAvailable";
 }
 
 export function sendLocation(): void{
@@ -77,10 +94,15 @@ export function sendLocation(): void{
 
 	logEvent(gana,"user_location", {
 		user: uuid,
-		app: apptype,
+		language: getAppLanguageFromDataURL(dataURL),
+		app: getAppTypeFromDataURL(dataURL),
 		lat: lat,
 		lon: lon
 	});
+
+	console.log("INITIALIZED EVENT SENT");
+	console.log("App Language: " + getAppLanguageFromDataURL(dataURL));
+	console.log("App Type: " + getAppTypeFromDataURL(dataURL));
 
 	logEvent(gana,"initialized", {
 		type: "initialized",
@@ -90,7 +112,9 @@ export function sendLocation(): void{
 		lon: clon,
 		city: city,
 		region: region,
-		country: country
+		country: country,
+		app: getAppTypeFromDataURL(dataURL),
+		language: getAppLanguageFromDataURL(dataURL)
 	});
 
 }
@@ -114,7 +138,7 @@ export function sendAnswered(theQ: qData, theA: number, elapsed: number): void {
 	if ("bucket" in theQ){
 		bucket = theQ.bucket;
 	}
-	var eventString = "user " + uuid + " ansered " + theQ.qName + " with " + ans.answerName;
+	var eventString = "user " + uuid + " answered " + theQ.qName + " with " + ans.answerName;
 	eventString += ", all answers were [";
 	var opts = "";
 	for (var aNum in theQ.answers) {
@@ -126,6 +150,7 @@ export function sendAnswered(theQ: qData, theA: number, elapsed: number): void {
 	eventString += iscorrect;
 	eventString += bucket;
 	console.log(eventString);
+
 	logEvent(gana,"answered", {
 		type: "answered",
 		clUserId: uuid,
@@ -135,16 +160,16 @@ export function sendAnswered(theQ: qData, theA: number, elapsed: number): void {
 		city: city,
 		region: region,
 		country: country,
-		app: apptype,
+		app: getAppTypeFromDataURL(dataURL),
+		language: getAppLanguageFromDataURL(dataURL),
 		dt: elapsed,
-		question_name: theQ.qName,
+		question_number: theQ.qNumber,
+		target: theQ.qTarget,
 		question: theQ.promptText,
 		selected_answer: ans.answerName,
 		iscorrect: iscorrect,
 		options: opts,
 		bucket: bucket
-
-
 	});
 
 }
@@ -164,26 +189,105 @@ export function sendBucket(tb: bucket, passed: boolean): void {
 		city: city,
 		region: region,
 		country: country,
-		app: apptype,
+		app: getAppTypeFromDataURL(dataURL),
+		language: getAppLanguageFromDataURL(dataURL),
 		bucketNumber: bn,
 		numberTriedInBucket:btried,
 		numberCorrectInBucket:bcorrect,
 		passedBucket: passed
-
-	})
+	});
 }
 
-export function sendFinished(): void {
-	var eventString = "user " + uuid + " finished the assessment"
+export function sendFinished(buckets: bucket[] = null): void {
+	let eventString = "user " + uuid + " finished the assessment";
 	console.log(eventString);
+
+	let basalBucketID = getBasalBucketID(buckets);
+	let ceilingBucketID = getCeilingBucketID(buckets);
+
+	if (basalBucketID == 0) {
+		basalBucketID = ceilingBucketID;
+	}
+
+	let score = calculateScore(buckets, basalBucketID);
+	const maxScore = buckets.length * 100;
+
+	console.log("Sending completed event");
+	console.log("Score: " + score);
+	console.log("Max Score: " + maxScore);
+	console.log("Basal Bucket: " + basalBucketID);
+	console.log("Ceiling Bucket: " + ceilingBucketID);
+
 	logEvent(gana,"completed", {
 		type: "completed",
 		clUserId: uuid,
 		userSource: userSource,
+		app: getAppTypeFromDataURL(dataURL),
+		language: getAppLanguageFromDataURL(dataURL),
 		lat: clat,
 		lon: clon,
 		city: city,
 		region: region,
-		country: country
+		country: country,
+		score: score,
+		maxScore: maxScore,
+		basalBucket: basalBucketID,
+		ceilingBucket: ceilingBucketID
 	});
+}
+
+function calculateScore(buckets: bucket[], basalBucketID: number): number {
+	console.log("Calculating score");
+	console.log(buckets);
+	
+	let score = 0;
+
+	console.log("Basal Bucket ID: " + basalBucketID);
+
+	// Get the numcorrect from the basal bucket based on looping through and finding the bucket id
+	let numCorrect = 0;
+
+	for (const index in buckets) {
+		const bucket = buckets[index];
+		if (bucket.bucketID == basalBucketID) {
+			numCorrect = bucket.numCorrect;
+			break;
+		}
+	}
+	
+	score = Math.round(((basalBucketID - 1) * 100) + (numCorrect / 5) * 100) | 0;
+
+	return score;
+}
+
+function getBasalBucketID(buckets: bucket[]): number {
+	let bucketID = 0;
+	
+	// Select the lowest bucketID bucket that the user has failed
+	for (const index in buckets) {
+		const bucket = buckets[index];
+		if (bucket.tested && !bucket.passed) {
+			if (bucketID == 0 || bucket.bucketID < bucketID) {
+				bucketID = bucket.bucketID;
+			}
+		}
+	}
+
+	return bucketID;
+}
+
+function getCeilingBucketID(buckets: bucket[]): number {
+	let bucketID = 0;
+	
+	// Select the hiughest bucketID bucket that the user has passed
+	for (const index in buckets) {
+		const bucket = buckets[index];
+		if (bucket.tested && bucket.passed) {
+			if (bucketID == 0 || bucket.bucketID > bucketID) {
+				bucketID = bucket.bucketID;
+			}
+		}
+	}
+
+	return bucketID;
 }

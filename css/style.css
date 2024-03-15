@@ -112,7 +112,7 @@ body {
 	max-width: 540px;
 	min-height: 100vh; 
 	height: 100%;
-	background: linear-gradient(180deg, rgba(223, 247, 161, 1) 0%, rgba(96, 171, 222, 1) 100%);
+	background: linear-gradient(180deg, rgba(96, 171, 222, 1)0%,  rgba(223, 247, 161, 1)100%);
 	background-size: 100% 100%;
 	bottom: 0;
 	position: relative;

@@ -2,6 +2,8 @@
 
 export type qData = {
 	qName: string; //for analytics event
+	qNumber: number; //for analytics event
+	qTarget: string; //for analytics event
 	promptText: string; //for display
 	promptImg?: string;
 	promptAudio?: string;

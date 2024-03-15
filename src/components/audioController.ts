@@ -103,10 +103,10 @@ export class AudioController {
 		
 		if (audioName.includes(".mp3")){
 			if (audioName.slice(-4) != ".mp3"){
-				audioName = audioName + ".mp3";
+				audioName = audioName.trim() + ".mp3";
 			}
 		} else {
-			audioName = audioName + ".mp3";
+			audioName = audioName.trim() + ".mp3";
 		}
 	
 		console.log("Pre play all audios: ");

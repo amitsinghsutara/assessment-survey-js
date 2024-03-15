@@ -1,7 +1,7 @@
 {
 	"quizName": "Nepalese letter sounds",
 	"appType": "assessment",
-	"feedbackText": "дивовижно!",
+	"feedbackText": "गज्जब!",
 	"buckets":[
 		{	"bucketID":1,
 			"bucketName":"nepalese-let-b1",
@@ -145,8 +145,7 @@
                 {"itemName" : "थ", "itemText" :"थ"},
                 {"itemName" : "क्ष", "itemText" :"क्ष"},
                 {"itemName" : "ए", "itemText" :"ए"},
-                {"itemName" : "त्र", "itemText" :"त्र"},
-                {"itemName" : "त्त", "itemText" :"त्त"}
+                {"itemName" : "त्र", "itemText" :"त्र"}
             ]
 		},
 		{	"bucketID":10,
