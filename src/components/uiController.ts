@@ -168,7 +168,7 @@ export class UIController {
 		if (!UIController.getInstance().shown) {
 			const newQ = UIController.getInstance().nextQuestion;
 			const buttons = UIController.getInstance().buttons;
-			const animationDuration = 1000; 
+			const animationDuration = 500; 
 			const delayBforeOption = 200;
 	        UIController.getInstance().shown = true;
 			buttons.forEach(button => {
