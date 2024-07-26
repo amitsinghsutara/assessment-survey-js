@@ -1,7 +1,9 @@
 {
 	"quizName": "pashto letter sounds",
 	"appType": "assessment",
+	"assessmentType": "letter-sounds",
 	"feedbackText": "په زړه پورې کار",
+	"contentVersion": "v0.1",
 	"buckets":[
 		{	"bucketID":1,
 			"bucketName":"pashto-let-b1",

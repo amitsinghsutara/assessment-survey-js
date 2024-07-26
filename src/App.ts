@@ -6,7 +6,7 @@ import { getUUID, getUserSource, getDataFile } from './components/urlUtils';
 import { Survey } from './survey/survey';
 import { Assessment } from './assessment/assessment';
 import { UnityBridge } from './components/unityBridge';
-import { setUuid, linkAnalytics, sendInit } from './components/analyticsEvents';
+import { AnalyticsEvents } from './components/analyticsEvents';
 import { BaseQuiz } from './BaseQuiz';
 import { fetchAppData, getDataURL } from './components/jsonUtils';
 import { initializeApp } from 'firebase/app';
@@ -15,7 +15,7 @@ import { Workbox } from 'workbox-window';
 import CacheModel from './components/cacheModel';
 import { UIController } from './components/uiController';
 
-const appVersion = "v0.2.0";
+const appVersion: string = "v1.0.7";
 
 let loadingScreen = document.getElementById("loadingScreen");
 
@@ -81,6 +81,7 @@ export class App {
 					UIController.SetFeedbackText(data["feedbackText"]);
 
 					let appType = data["appType"];
+					let assessmentType = data["assessmentType"];
 
 					if (appType == "survey") {
 						this.game = new Survey(this.dataURL, this.unityBridge);
@@ -93,7 +94,7 @@ export class App {
 							for (let j = 0; j < buckets[i].items.length; j++) {
 								let audioItemURL;
 								// Use to lower case for the Lugandan data
-								if (data["quizName"].includes("Luganda")) {
+								if (data["quizName"].includes("Luganda") || data["quizName"].toLowerCase().includes("west african english")) {
 									audioItemURL = "/audio/" + this.dataURL + "/" + buckets[i].items[j].itemName.toLowerCase().trim() + ".mp3";
 								} else {
 									audioItemURL = "/audio/" + this.dataURL + "/" + buckets[i].items[j].itemName.trim() + ".mp3";
@@ -110,9 +111,11 @@ export class App {
 
 					this.game.unityBridge = this.unityBridge;
 
-					setUuid(getUUID(), getUserSource());
-					linkAnalytics(this.analytics, this.dataURL);
-					sendInit();
+					AnalyticsEvents.setUuid(getUUID(), getUserSource());
+					AnalyticsEvents.linkAnalytics(this.analytics, this.dataURL);
+					AnalyticsEvents.setAssessmentType(assessmentType); 
+					AnalyticsEvents.sendInit(appVersion, data["contentVersion"]);
+					// this.cacheModel.setAppName(this.cacheModel.appName + ':' + data["contentVersion"]);
 
 					this.game.Run(this);
 				});
@@ -120,8 +123,6 @@ export class App {
 				await this.registerServiceWorker(this.game);
 			})();
 		});
-
-		
 	}
 
 	async registerServiceWorker(game: BaseQuiz) {

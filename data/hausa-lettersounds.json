@@ -1,0 +1,479 @@
+{
+  "quizName": "hausa letter sounds",
+  "appType": "assessment",
+  "assessmentType": "letter-sounds",
+  "feedbackText": "Yayi!",
+  "contentVersion": "v0.1",
+  "buckets": [
+    {
+      "bucketID": 1,
+      "bucketName": "hausalet-b-1",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "O",
+          "itemText": "O"
+        },
+        {
+          "itemName": "R",
+          "itemText": "R"
+        },
+        {
+          "itemName": "u",
+          "itemText": "u"
+        },
+        {
+          "itemName": "M",
+          "itemText": "M"
+        },
+        {
+          "itemName": "c",
+          "itemText": "c"
+        },
+        {
+          "itemName": "d",
+          "itemText": "d"
+        },
+        {
+          "itemName": "G",
+          "itemText": "G"
+        },
+        {
+          "itemName": "W",
+          "itemText": "W"
+        },
+        {
+          "itemName": "s",
+          "itemText": "s"
+        },
+        {
+          "itemName": "a",
+          "itemText": "a"
+        }
+      ]
+    },
+    {
+      "bucketID": 2,
+      "bucketName": "hausalet-b-2",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "b",
+          "itemText": "b"
+        },
+        {
+          "itemName": "H",
+          "itemText": "H"
+        },
+        {
+          "itemName": "j",
+          "itemText": "j"
+        },
+        {
+          "itemName": "A",
+          "itemText": "A"
+        },
+        {
+          "itemName": "T",
+          "itemText": "T"
+        },
+        {
+          "itemName": "s",
+          "itemText": "s"
+        },
+        {
+          "itemName": "u",
+          "itemText": "u"
+        },
+        {
+          "itemName": "i",
+          "itemText": "i"
+        },
+        {
+          "itemName": "E",
+          "itemText": "E"
+        },
+        {
+          "itemName": "kw",
+          "itemText": "kw"
+        }
+      ]
+    },
+    {
+      "bucketID": 3,
+      "bucketName": "hausalet-b-3",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "e",
+          "itemText": "e"
+        },
+        {
+          "itemName": "gw",
+          "itemText": "gw"
+        },
+        {
+          "itemName": "a",
+          "itemText": "a"
+        },
+        {
+          "itemName": "i",
+          "itemText": "i"
+        },
+        {
+          "itemName": "N",
+          "itemText": "N"
+        },
+        {
+          "itemName": "y",
+          "itemText": "y"
+        },
+        {
+          "itemName": "ƙ",
+          "itemText": "ƙ"
+        },
+        {
+          "itemName": "ɓ",
+          "itemText": "ɓ"
+        },
+        {
+          "itemName": "M",
+          "itemText": "M"
+        },
+        {
+          "itemName": "r",
+          "itemText": "r"
+        }
+      ]
+    },
+    {
+      "bucketID": 4,
+      "bucketName": "hausalet-b-4",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "h",
+          "itemText": "h"
+        },
+        {
+          "itemName": "ɓ",
+          "itemText": "ɓ"
+        },
+        {
+          "itemName": "t",
+          "itemText": "t"
+        },
+        {
+          "itemName": "n",
+          "itemText": "n"
+        },
+        {
+          "itemName": "B",
+          "itemText": "B"
+        },
+        {
+          "itemName": "o",
+          "itemText": "o"
+        },
+        {
+          "itemName": "l",
+          "itemText": "l"
+        },
+        {
+          "itemName": "C",
+          "itemText": "C"
+        },
+        {
+          "itemName": "ai",
+          "itemText": "ai"
+        },
+        {
+          "itemName": "k",
+          "itemText": "k"
+        }
+      ]
+    },
+    {
+      "bucketID": 5,
+      "bucketName": "hausalet-b-5",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "K",
+          "itemText": "K"
+        },
+        {
+          "itemName": "D",
+          "itemText": "D"
+        },
+        {
+          "itemName": "m",
+          "itemText": "m"
+        },
+        {
+          "itemName": "Z",
+          "itemText": "Z"
+        },
+        {
+          "itemName": "f",
+          "itemText": "f"
+        },
+        {
+          "itemName": "T",
+          "itemText": "T"
+        },
+        {
+          "itemName": "n",
+          "itemText": "n"
+        },
+        {
+          "itemName": "i",
+          "itemText": "i"
+        },
+        {
+          "itemName": "y",
+          "itemText": "y"
+        },
+        {
+          "itemName": "A",
+          "itemText": "A"
+        }
+      ]
+    },
+    {
+      "bucketID": 6,
+      "bucketName": "hausalet-b-6",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "c",
+          "itemText": "c"
+        },
+        {
+          "itemName": "U",
+          "itemText": "U"
+        },
+        {
+          "itemName": "d",
+          "itemText": "d"
+        },
+        {
+          "itemName": "au",
+          "itemText": "au"
+        },
+        {
+          "itemName": "m",
+          "itemText": "m"
+        },
+        {
+          "itemName": "z",
+          "itemText": "z"
+        },
+        {
+          "itemName": "sh",
+          "itemText": "sh"
+        },
+        {
+          "itemName": "L",
+          "itemText": "L"
+        },
+        {
+          "itemName": "a",
+          "itemText": "a"
+        },
+        {
+          "itemName": "ts",
+          "itemText": "ts"
+        }
+      ]
+    },
+    {
+      "bucketID": 7,
+      "bucketName": "hausalet-b-7",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "w",
+          "itemText": "w"
+        },
+        {
+          "itemName": "d",
+          "itemText": "d"
+        },
+        {
+          "itemName": "u",
+          "itemText": "u"
+        },
+        {
+          "itemName": "b",
+          "itemText": "b"
+        },
+        {
+          "itemName": "a",
+          "itemText": "a"
+        },
+        {
+          "itemName": "K",
+          "itemText": "K"
+        },
+        {
+          "itemName": "c",
+          "itemText": "c"
+        },
+        {
+          "itemName": "R",
+          "itemText": "R"
+        },
+        {
+          "itemName": "N",
+          "itemText": "N"
+        },
+        {
+          "itemName": "G",
+          "itemText": "G"
+        }
+      ]
+    },
+    {
+      "bucketID": 8,
+      "bucketName": "hausalet-b-8",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "k",
+          "itemText": "k"
+        },
+        {
+          "itemName": "ɗ",
+          "itemText": "ɗ"
+        },
+        {
+          "itemName": "N",
+          "itemText": "N"
+        },
+        {
+          "itemName": "ai",
+          "itemText": "ai"
+        },
+        {
+          "itemName": "o",
+          "itemText": "o"
+        },
+        {
+          "itemName": "t",
+          "itemText": "t"
+        },
+        {
+          "itemName": "i",
+          "itemText": "i"
+        },
+        {
+          "itemName": "Y",
+          "itemText": "Y"
+        },
+        {
+          "itemName": "L",
+          "itemText": "L"
+        },
+        {
+          "itemName": "j",
+          "itemText": "j"
+        }
+      ]
+    },
+    {
+      "bucketID": 9,
+      "bucketName": "hausalet-b-9",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "ƙw",
+          "itemText": "ƙw"
+        },
+        {
+          "itemName": "g",
+          "itemText": "g"
+        },
+        {
+          "itemName": "A",
+          "itemText": "A"
+        },
+        {
+          "itemName": "K",
+          "itemText": "K"
+        },
+        {
+          "itemName": "sh",
+          "itemText": "sh"
+        },
+        {
+          "itemName": "y",
+          "itemText": "y"
+        },
+        {
+          "itemName": "o",
+          "itemText": "o"
+        },
+        {
+          "itemName": "H",
+          "itemText": "H"
+        },
+        {
+          "itemName": "n",
+          "itemText": "n"
+        },
+        {
+          "itemName": "r",
+          "itemText": "r"
+        }
+      ]
+    },
+    {
+      "bucketID": 10,
+      "bucketName": "hausalet-b-10",
+      "usedItems": [],
+      "items": [
+        {
+          "itemName": "S",
+          "itemText": "S"
+        },
+        {
+          "itemName": "U",
+          "itemText": "U"
+        },
+        {
+          "itemName": "Y",
+          "itemText": "Y"
+        },
+        {
+          "itemName": "n",
+          "itemText": "n"
+        },
+        {
+          "itemName": "L",
+          "itemText": "L"
+        },
+        {
+          "itemName": "K",
+          "itemText": "K"
+        },
+        {
+          "itemName": "W",
+          "itemText": "W"
+        },
+        {
+          "itemName": "F",
+          "itemText": "F"
+        },
+        {
+          "itemName": "A",
+          "itemText": "A"
+        },
+        {
+          "itemName": "E",
+          "itemText": "E"
+        }
+      ]
+    }
+  ]
+}

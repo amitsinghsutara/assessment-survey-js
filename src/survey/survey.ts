@@ -4,7 +4,7 @@
 import { UIController } from '../components/uiController';
 import { AudioController } from '../components/audioController';
 import { qData, answerData } from '../components/questionData';
-import { sendAnswered, sendFinished } from '../components/analyticsEvents'
+import { AnalyticsEvents } from '../components/analyticsEvents'
 import { App } from '../App';
 import { BaseQuiz } from '../BaseQuiz';
 import { fetchSurveyQuestions } from '../components/jsonUtils';
@@ -24,6 +24,14 @@ export class Survey extends BaseQuiz {
 		this.currentQuestionIndex = 0;
 		UIController.SetButtonPressAction(this.TryAnswer);
 		UIController.SetStartAction(this.startSurvey);
+	}
+
+	public handleBucketGenModeChange = () => {
+		console.log("Bucket Gen Mode Changed");
+	}
+
+	public handleCorrectLabelShownChange = () => {
+		console.log("Correct Label Shown Changed");
 	}
 
 	public async Run(app: App) {
@@ -55,7 +63,7 @@ export class Survey extends BaseQuiz {
 	}
 
 	public TryAnswer = (answer: number, elapsed: number) => {
-		sendAnswered(this.questionsData[this.currentQuestionIndex], answer, elapsed)
+		AnalyticsEvents.sendAnswered(this.questionsData[this.currentQuestionIndex], answer, elapsed)
 		UIController.SetFeedbackVisibile(true);
 		UIController.AddStar();
 		setTimeout(() => { this.onQuestionEnd() }, 2000);

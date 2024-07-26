@@ -1,12 +1,15 @@
 {
 	"quizName": "Ukrainian letter sounds",
 	"appType": "assessment",
+    "assessmentType": "letter-sounds",
 	"feedbackText": "дивовижно!",
+    "contentVersion": "v0.1",
 	"buckets":[
 		{	"bucketID":1,
 			"bucketName":"ukrainian-let-b1",
 			"usedItems":[],
 			"items": [
+                {"itemName": "O", "itemText": "O"},
                 {"itemName" : "A", "itemText": "A"},
                 {"itemName" : "Н", "itemText": "Н"},
                 {"itemName" : "І", "itemText": "І"},
@@ -22,6 +25,7 @@
 			"bucketName":"ukrainian-let-b2",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "K", "itemText" :"K"},
                 {"itemName" : "Л", "itemText" :"Л"},
                 {"itemName" : "У", "itemText" :"У"},
                 {"itemName" : "Д", "itemText" :"Д"},
@@ -38,6 +42,7 @@
 			"bucketName":"ukrainian-let-b3",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "A", "itemText" :"A"},
                 {"itemName" : "Н", "itemText" :"Н"},
                 {"itemName" : "Ь", "itemText" :"Ь"},
                 {"itemName" : "Л", "itemText" :"Л"},
@@ -54,6 +59,7 @@
 			"bucketName":"ukrainian-let-b4",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "П", "itemText" :"П"},
                 {"itemName" : "С", "itemText" :"С"},
                 {"itemName" : "Д", "itemText" :"Д"},
                 {"itemName" : "O", "itemText" :"O"},
@@ -69,6 +75,7 @@
 			"bucketName":"ukrainian-let-b5",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "П", "itemText" :"П"},
                 {"itemName" : "Я", "itemText" :"Я"},
                 {"itemName" : "З", "itemText" :"З"},
                 {"itemName" : "Ь", "itemText" :"Ь"},
@@ -84,6 +91,7 @@
 			"bucketName":"ukrainian-let-b6",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "У", "itemText" :"У"},
                 {"itemName" : "Д", "itemText" :"Д"},
                 {"itemName" : "Г", "itemText" :"Г"},
                 {"itemName" : "X", "itemText" :"X"},
@@ -99,6 +107,7 @@
 			"bucketName":"ukrainian-let-b7",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "A", "itemText" :"A"},
                 {"itemName" : "П", "itemText" :"П"},
                 {"itemName" : "Л", "itemText" :"Л"},
                 {"itemName" : "Ц", "itemText" :"Ц"},
@@ -114,6 +123,7 @@
 			"bucketName":"ukrainian-let-b8",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "X", "itemText" :"X"},
                 {"itemName" : "Ч", "itemText" :"Ч"},
                 {"itemName" : "Ц", "itemText" :"Ц"},
                 {"itemName" : "Ї", "itemText" :"Ї"},
@@ -129,6 +139,7 @@
 			"bucketName":"ukrainian-let-b9",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "Ґ", "itemText" :"Ґ"},
                 {"itemName" : "Б", "itemText" :"Б"},
                 {"itemName" : "У", "itemText" :"У"},
                 {"itemName" : "И", "itemText" :"И"},
@@ -144,6 +155,7 @@
 			"bucketName":"ukrainian-let-b10",
 			"usedItems":[],
 			"items":[
+                {"itemName" : "O", "itemText" :"O"},
                 {"itemName" : "С", "itemText" :"С"},
                 {"itemName" : "Ш", "itemText" :"Ш"},
                 {"itemName" : "Ф", "itemText" :"Ф"},

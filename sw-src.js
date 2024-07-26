@@ -90,7 +90,7 @@ function cacheTheBookJSONAndImages(data) {
 
   caches.open(appData["appName"]).then((cache) => {
     for (let i = 0; i < cachableAssets.length; i++) {
-      cache.add(cachableAssets[i]).finally(() => {
+      cache.add(cachableAssets[i].toLowerCase()).finally(() => {
         updateCachingProgress(appData["appName"]);
       }).catch((error) => {
         if (debugCaching) {
